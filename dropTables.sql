@@ -1,4 +1,8 @@
 
+DROP TRIGGER city_id_generator;
+DROP SEQUENCE city_id_sequence;
+DROP TRIGGER program_id_generator;
+DROP SEQUENCE program_id_sequence;
 DROP TABLE TAGS;
 ALTER TABLE ALBUMS
   DROP CONSTRAINT hasCoverPhoto;

@@ -153,3 +153,31 @@ CREATE TABLE TAGS(
     FOREIGN KEY (TAG_PHOTO_ID) REFERENCES PHOTOS(PHOTO_ID),
     FOREIGN KEY (TAG_SUBJECT_ID) REFERENCES USERS(USER_ID)
 );
+
+CREATE SEQUENCE city_id_sequence
+    START WITH 1
+    INCREMENT BY 1;
+    
+CREATE TRIGGER city_id_generator
+    BEFORE INSERT ON CITIES
+    FOR EACH ROW
+    BEGIN
+        SELECT city_id_sequence.NEXTVAL
+        INTO :NEW.CITY_ID
+        FROM DUAL;
+    END;
+/
+
+CREATE SEQUENCE program_id_sequence
+    START WITH 1
+    INCREMENT BY 1;
+    
+CREATE TRIGGER program_id_generator
+    BEFORE INSERT ON PROGRAMS
+    FOR EACH ROW
+    BEGIN
+        SELECT program_id_sequence.NEXTVAL
+        INTO :NEW.PROGRAM_ID
+        FROM DUAL;
+    END;
+/
